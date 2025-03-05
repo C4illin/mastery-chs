@@ -4,6 +4,7 @@
 #import "pages/abspage.typ" : abspage
 #import "pages/ackpage.typ" : ackpage
 #import "pages/tocpage.typ" : tocpage
+#import "pages/lastpage.typ" : lastpage
 #import "font-sizes.typ"
 
 /// Creates a footer which displays the page counter with the given args, at the
@@ -202,4 +203,11 @@
   }
 
   content
+
+  pagebreak()
+  set page(
+    footer: none,
+    header: none,
+  )
+  lastpage(school, date.year(), title, subtitle, authors.join([\ ]), department, subject)
 }
