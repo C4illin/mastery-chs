@@ -1,9 +1,9 @@
 # mastery-chs: Chalmers Master's Thesis template in Typst
 
 A thesis template for Master Thesises at
-[Chalmers University of Technology](https://www.chalmers.se/en/).
+[Chalmers University of Technology](https://www.chalmers.se/en/) (except CSE/GU students).
 More or less a port of the
-[provided LaTeX template](https://www.overleaf.com/read/psszszkvvmkd), although
+[provided LaTeX template](https://www.overleaf.com/latex/templates/chalmers-university-of-technology-degree-project-report-template-2023-english/tffgsvqnhxmv), although
 not a 100% faithful one.
 
 ## Usage
