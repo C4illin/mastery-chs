@@ -1,10 +1,10 @@
 #import "lib.typ" : join
 #import "../font-sizes.typ" : *
 
-#let fourthpage(school, year, title, subtitle, authors, department, supervisor, advisor, examiner) = {
+#let fourthpage(school, year, title, subtitle, authors, department, supervisor, advisor, examiner, cover) = {
   grid(rows: (1fr, auto), {
       let vv = v(0.8cm)
-      v(6cm)
+      v(4.5cm)
       [
         #title\
         #subtitle\
@@ -12,7 +12,7 @@
       ]
       vv
       [
-        #sym.copyright #upper(authors.join(", ")), #year
+        #sym.copyright #upper(authors.join(", ")), #year.
       ]
       vv
       grid(
@@ -28,12 +28,15 @@
         #department\
         #join(school, ", ", last: " and ")\
         SE-412 96 Gothenburg\
+        Sweden\
         Telephone +46 31-772 10 00
       ]
     },
     [
+      Cover: #cover\
+      #v(0.5cm-0.65em)
       Typeset in Typst\
-      Gothenburg, Sweden, #year
+      Gothenburg, Sweden #year
     ]
   )
   pagebreak()

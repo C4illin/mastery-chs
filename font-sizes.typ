@@ -1,3 +1,6 @@
+/// The latex `\footnotesize` text size
+#let footnotesize = text.with(0.8em)
+
 /// The latex `\large` text size
 #let large = text.with(1.2em)
 

@@ -5,24 +5,24 @@
   set text(font: "New Computer Modern")
   set page(margin: (left: 120pt, right: 120pt, top: 90pt, bottom: 90pt))
 
-  align(center + horizon,
+  align(center + top,
     grid(
       rows: (auto, 1fr, auto),
       large(smallcaps[Master's thesis #year]),
       {
-        v(20pt)
+        v(4cm)
         x-large(weight: "semibold", title)
-        v(10pt)
+        v(1cm)
         large(subtitle)
         v(1cm)
         large(upper(authors))
       },
       [
-        #image("../img/AvancezChalmersU_black_centered.svg", width: 45%)
-        #v(5mm)
+        #image("../img/AvancezChalmersU_black_centered.svg", width: 35%)
+        #v(10mm)
         #department\
         #smallcaps(join(school, [\ ]))\
-        Gothenburg, Sweden, #year
+        Gothenburg, Sweden #year
       ]
     )
   )

@@ -18,11 +18,11 @@
   )
 
   set page(background: bg, margin: 40pt)
-  set text(font: "New Computer Modern Sans", fill: white)
+  set text(font: "New Computer Modern Sans", fill: white, size: 0.8em, weight: "bold")
   pad(left: 15mm)[#align(left + top)[
-    #text(weight: "bold")[#department]\
-    #smallcaps(join(school, [\ ]))\
-    Gothenburg, Sweden, #year\
+    #upper(department)\
+    #upper(join(school, [\ ]))\
+    Gothenburg, Sweden\
     #link("https://www.chalmers.se")[www.chalmers.se]
     #v(1cm)
   ]]

@@ -57,7 +57,7 @@
 ///
 /// Note: You most likely want to use the `template` function in a `show` rule
 /// instead, which sets the style as well
-#let pages(school, date, title, subtitle, authors, department, subject, supervisor, advisor, examiner, abstract, keywords, acknowledgements, figures, tables) = {
+#let pages(school, date, title, subtitle, authors, department, subject, supervisor, advisor, examiner, cover, abstract, keywords, acknowledgements, figures, tables) = {
   let blankpagebreak(..args) = {
     set page(footer: none)
     pagebreak(..args)
@@ -73,7 +73,7 @@
   // fourth page (inside cover page)
   pagebreak(to: "even")
   set page(footer: footer("i"))
-  fourthpage(school, date.year(), title, subtitle, authors, department, supervisor, advisor, examiner)
+  fourthpage(school, date.year(), title, subtitle, authors, department, supervisor, advisor, examiner, cover)
 
   // abstract page
   abspage(school, title, subtitle, authors, department, abstract, keywords)
@@ -144,16 +144,17 @@
 /// function puts top-level headings (chapters) on a new odd page, adds headings
 /// to non-chapter pages, and adds a footer to all pages
 #let template(
-  school: ("Chalmers University of Technology", "University of Gothenburg"),
+  school: ("Chalmers University of Technology"),
   date: datetime.today(),
-  title: "A Chalmers University of Technology Master's thesis template for typst",
+  title: "An Informative Headline describing the Content of the Report",
   subtitle: "A Subtitle that can be Very Much Longer if Necessary",
   authors: ("Name Familyname 1", "Name Familyname 2"),
-  department: "Department of Computer Science and Engineering",
+  department: "Department of Some Subject or Technology",
   subject: "Computer science and engineering",
-  supervisor: ("Supervisor Supervisorsson", "Department"),
+  supervisor: ("Supervisor Supervisorsson", "Company or Department"),
   advisor: ("Advisor Advisorsson", "Department"),
   examiner: ("Examiner Examinersson", "Department"),
+  cover: [Wind visualization constructed in Matlab showing a surface of constant wind speed along with streamlines of the flow.],
   abstract: [Abstract text about your project in Computer Science and Engineering],
   keywords: ("Keyword 1", "keyword 2"),
   acknowledgements: [Here, you can say thank you to your supervisor(s), company advisors and other
@@ -177,7 +178,7 @@
 
 
   // prelude pages
-  pages(school, date, title, subtitle, authors, department, subject, supervisor, advisor, examiner, abstract, keywords, acknowledgements, figures, tables)
+  pages(school, date, title, subtitle, authors, department, subject, supervisor, advisor, examiner, cover, abstract, keywords, acknowledgements, figures, tables)
 
 
   // default page style
@@ -233,6 +234,8 @@
     }
     it
   }
+
+  set math.equation(numbering: "(1)")
 
   content
 
