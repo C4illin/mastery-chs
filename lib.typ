@@ -1,10 +1,10 @@
-#import "pages/frontpage.typ" : frontpage
-#import "pages/thirdpage.typ" : thirdpage
-#import "pages/fourthpage.typ" : fourthpage
-#import "pages/abspage.typ" : abspage
-#import "pages/ackpage.typ" : ackpage
-#import "pages/tocpage.typ" : tocpage
-#import "pages/lastpage.typ" : lastpage
+#import "pages/frontpage.typ": frontpage
+#import "pages/thirdpage.typ": thirdpage
+#import "pages/fourthpage.typ": fourthpage
+#import "pages/abspage.typ": abspage
+#import "pages/ackpage.typ": ackpage
+#import "pages/tocpage.typ": tocpage
+#import "pages/lastpage.typ": lastpage
 #import "font-sizes.typ"
 
 /// Creates a footer which displays the page counter with the given args, at the
@@ -57,7 +57,24 @@
 ///
 /// Note: You most likely want to use the `template` function in a `show` rule
 /// instead, which sets the style as well
-#let pages(school, date, title, subtitle, authors, department, subject, supervisor, advisor, examiner, cover, abstract, keywords, acknowledgements, figures, tables) = {
+#let pages(
+  school,
+  date,
+  title,
+  subtitle,
+  authors,
+  department,
+  subject,
+  supervisor,
+  advisor,
+  examiner,
+  cover,
+  abstract,
+  keywords,
+  acknowledgements,
+  figures,
+  tables,
+) = {
   let blankpagebreak(..args) = {
     set page(footer: none)
     pagebreak(..args)
@@ -144,7 +161,7 @@
 /// function puts top-level headings (chapters) on a new odd page, adds headings
 /// to non-chapter pages, and adds a footer to all pages
 #let template(
-  school: ("Chalmers University of Technology"),
+  school: "Chalmers University of Technology",
   date: datetime.today(),
   title: "An Informative Headline describing the Content of the Report",
   subtitle: "A Subtitle that can be Very Much Longer if Necessary",
@@ -158,14 +175,14 @@
   abstract: [Abstract text about your project in Computer Science and Engineering],
   keywords: ("Keyword 1", "keyword 2"),
   acknowledgements: [Here, you can say thank you to your supervisor(s), company advisors and other
-  people that supported you during your project.],
+    people that supported you during your project.],
   figures: true,
   tables: true,
-  content
+  content,
 ) = {
   set page(
     footer: none,
-    numbering: "i"
+    numbering: "i",
   )
   set text(size: 12pt, font: "New Computer Modern")
 
@@ -178,7 +195,24 @@
 
 
   // prelude pages
-  pages(school, date, title, subtitle, authors, department, subject, supervisor, advisor, examiner, cover, abstract, keywords, acknowledgements, figures, tables)
+  pages(
+    school,
+    date,
+    title,
+    subtitle,
+    authors,
+    department,
+    subject,
+    supervisor,
+    advisor,
+    examiner,
+    cover,
+    abstract,
+    keywords,
+    acknowledgements,
+    figures,
+    tables,
+  )
 
 
   // default page style
@@ -197,13 +231,11 @@
         #context it.counter.display(it.numbering)
       ]
       #it.separator#it.body
-    ]
+    ],
   )
 
   // Make captions for figures containing tables display above the table
-  show figure.where(
-  kind: table
-  ): set figure.caption(position: top)
+  show figure.where(kind: table): set figure.caption(position: top)
 
   set heading(numbering: "1.1")
   counter(heading).update(0)
@@ -211,13 +243,16 @@
   show heading: it => {
     if it.level == 1 {
       pagebreak(to: "odd", weak: true)
-      align(center, {
-        v(38pt)
-        text(50pt, weight: "regular", str(counter(heading).display()))
-        v(-30pt)
-        text(24pt, it.body)
-        v(30pt)
-      })
+      align(
+        center,
+        {
+          v(38pt)
+          text(50pt, weight: "regular", str(counter(heading).display()))
+          v(-30pt)
+          text(24pt, it.body)
+          v(30pt)
+        },
+      )
     } else {
       [#counter(heading).display() #h(text.size) #it.body]
     }
@@ -226,11 +261,14 @@
   show bibliography: it => {
     show heading: it => {
       pagebreak(to: "odd", weak: true)
-      align(center, {
-        v(100pt)
-        text(24pt, it.body)
-        v(30pt)
-      })
+      align(
+        center,
+        {
+          v(100pt)
+          text(24pt, it.body)
+          v(30pt)
+        },
+      )
     }
     it
   }

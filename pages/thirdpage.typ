@@ -1,11 +1,12 @@
-#import "lib.typ" : join
-#import "../font-sizes.typ" : *
+#import "lib.typ": join
+#import "../font-sizes.typ": *
 
 #let thirdpage(school, year, title, subtitle, authors, department) = {
   set text(font: "New Computer Modern")
   set page(margin: (left: 120pt, right: 120pt, top: 90pt, bottom: 90pt))
 
-  align(center + top,
+  align(
+    center + top,
     grid(
       rows: (auto, 1fr, auto),
       large(smallcaps[Master's thesis #year]),
@@ -24,6 +25,6 @@
         #smallcaps(join(school, [\ ]))\
         Gothenburg, Sweden #year
       ]
-    )
+    ),
   )
 }

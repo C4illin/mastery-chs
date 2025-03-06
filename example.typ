@@ -1,8 +1,8 @@
 //#import "mastery-chs/lib.typ" : template
-#import "lib.typ" : template
+#import "lib.typ": template
 
 #show: template.with(
-// Override defaults fields here, such as title, authors, etc
+  // Override defaults fields here, such as title, authors, etc
 )
 
 = Some title here

@@ -1,8 +1,9 @@
-#import "lib.typ" : join
-#import "../font-sizes.typ" : *
+#import "lib.typ": join
+#import "../font-sizes.typ": *
 
 #let fourthpage(school, year, title, subtitle, authors, department, supervisor, advisor, examiner, cover) = {
-  grid(rows: (1fr, auto), {
+  grid(
+    rows: (1fr, auto), {
       let vv = v(0.8cm)
       v(4.5cm)
       [
@@ -16,7 +17,7 @@
       ]
       vv
       grid(
-        columns: (auto),
+        columns: auto,
         gutter: 6pt,
         [Supervisor: #supervisor.at(0), #supervisor.at(1)],
         [Advisor: #advisor.at(0), #advisor.at(1)],
@@ -34,7 +35,7 @@
     },
     [
       Cover: #cover\
-      #v(0.5cm-0.65em)
+      #v(0.5cm - 0.65em)
       Typeset in Typst\
       Gothenburg, Sweden #year
     ]

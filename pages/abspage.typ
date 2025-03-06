@@ -1,4 +1,4 @@
-#import "lib.typ" : join
+#import "lib.typ": join
 
 #let abspage(school, title, subtitle, authors, department, abstract, keywords) = {
   [

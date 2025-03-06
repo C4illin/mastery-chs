@@ -2,10 +2,7 @@
 name = "mastery-chs"
 version = "0.1.0"
 entrypoint = "lib.typ"
-authors = [
-    "Jonathan Widén <@cmdjojo>",
-    "Leopold Wigbratt <@leopoldwigbratt>"
-]
+authors = ["Jonathan Widén <@cmdjojo>", "Leopold Wigbratt <@leopoldwigbratt>"]
 license = "MIT"
 description = "A template for Master's Thesis written at Chalmers University of Technology."
 repository = "https://github.com/CMDJojo/mastery-chs"
