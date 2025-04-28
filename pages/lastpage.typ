@@ -17,7 +17,7 @@
     ),
   )
 
-  set page(background: bg, margin: 40pt)
+  set page(background: bg, margin: 42pt)
   set text(font: "New Computer Modern Sans", fill: white, size: 0.9em, weight: "bold")
   pad(left: 15mm)[#align(left + top)[
       #upper(department)\

@@ -29,6 +29,8 @@
   set page(background: bg, margin: 50pt)
   set text(font: "New Computer Modern Sans")
 
+  pad(x: -50pt + 0.75cm, top: 70pt)[#image("../img/cover.jpg")]
+ 
   align(left + bottom)[
     #huge(weight: "bold", title)
 
@@ -44,7 +46,7 @@
     #upper(text(fill: chalmersGray, weight: "bold")[#department])\
     #pad(x: -20pt, y: -10pt, line(length: 100%, stroke: chalmersGray + 1pt))
     #smallcaps(join(school, [\ ]))\
-    Gothenburg, Sweden, #year\
+    Gothenburg, Sweden #year\
     #link("https://www.chalmers.se")[www.chalmers.se]
     #v(1cm)
   ]

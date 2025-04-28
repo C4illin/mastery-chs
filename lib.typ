@@ -226,11 +226,7 @@
   // Make the "Figure/Table" text in captions bold and left align wider captions
   show figure.caption: it => box(
     align(left)[
-      #text(weight: "bold")[
-        #it.supplement
-        #context it.counter.display(it.numbering)
-      ]
-      #it.separator#it.body
+      #text(weight: "bold")[#it.supplement #context it.counter.display(it.numbering)]#it.separator#it.body
     ],
   )
 
@@ -239,6 +235,14 @@
 
   set heading(numbering: "1.1")
   counter(heading).update(0)
+
+  set heading(numbering: "1.1")
+  set math.equation(numbering: (..num) =>
+    numbering("(1.1)", counter(heading).get().first(), num.pos().first())
+  )
+  set figure(numbering: (..num) =>
+    numbering("1.1", counter(heading).get().first(), num.pos().first())
+  )
 
   show heading: it => {
     if it.level == 1 {
@@ -273,8 +277,11 @@
     it
   }
 
-  set math.equation(numbering: "(1)")
-
+  //show heading: i-figured.reset-counters
+  //show figure: i-figured.show-figure
+  //show math.equation: i-figured.show-equation
+  //set math.equation(numbering: "(1.1)")
+  
   content
 
   pagebreak()

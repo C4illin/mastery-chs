@@ -23,6 +23,7 @@
     v(100pt)
     align(center, text(24pt)[= List of Figures])
     [
+      #show outline.entry: set outline.entry(fill: repeat("." + h(6pt)))
       #outline(
         title: none,
         target: figure.where(kind: image),
@@ -34,6 +35,7 @@
     v(100pt)
     align(center, text(24pt)[= List of Tables])
     [
+      #show outline.entry: set outline.entry(fill: repeat("." + h(6pt)))
       #outline(title: none, target: figure.where(kind: table))
     ]
   }

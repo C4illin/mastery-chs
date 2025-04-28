@@ -20,7 +20,7 @@
         columns: auto,
         gutter: 6pt,
         [Supervisor: #supervisor.at(0), #supervisor.at(1)],
-        [Advisor: #advisor.at(0), #advisor.at(1)],
+        // [Advisor: #advisor.at(0), #advisor.at(1)],
         [Examiner: #examiner.at(0), #examiner.at(1)],
       )
       vv
@@ -30,7 +30,7 @@
         #join(school, ", ", last: " and ")\
         SE-412 96 Gothenburg\
         Sweden\
-        Telephone +46 31-772 10 00
+        Telephone #link("tel:+46317721000")[+46 31-772 10 00]
       ]
     },
     [
