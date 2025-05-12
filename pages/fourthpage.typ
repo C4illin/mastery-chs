@@ -25,7 +25,7 @@
       )
       vv
       [
-        Master's thesis #year\
+        Master's Thesis #year\
         #department\
         #join(school, ", ", last: " and ")\
         SE-412 96 Gothenburg\

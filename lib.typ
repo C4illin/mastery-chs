@@ -3,7 +3,7 @@
 #import "pages/fourthpage.typ": fourthpage
 #import "pages/abspage.typ": abspage
 #import "pages/ackpage.typ": ackpage
-#import "pages/tocpage.typ": tocpage
+#import "pages/tocpage.typ": tocpage, flex-caption
 #import "pages/lastpage.typ": lastpage
 #import "font-sizes.typ"
 
@@ -22,7 +22,7 @@
 /// #import "@preview/mastery-chs:0.1.0" : header
 /// #set page(header: header(text: (idx, name) => [Chapter #idx: #name]))
 /// ```
-#let header(text: (idx, name) => [#idx. #name]) = context {
+#let header(numbering: x => x, text: (idx, name) => [#idx. #name]) = context {
   // check if the next title page is this page
   let nextsel = selector(heading.where(level: 1)).after(here())
   let nextheaders = query(nextsel)
@@ -42,7 +42,7 @@
       if counter(heading).get().at(0) == 0 {
         prevheaders.last().body
       } else {
-        text(counter(heading).get().at(0), prevheaders.last().body)
+        text(numbering(counter(heading).get().at(0)), prevheaders.last().body)
       }
       v(-0.8em)
       line(length: 100%, stroke: black + 0.3pt)
@@ -74,6 +74,7 @@
   acknowledgements,
   figures,
   tables,
+  glossary_enabled,
 ) = {
   let blankpagebreak(..args) = {
     set page(footer: none)
@@ -106,12 +107,28 @@
     header: header(text: (idx, body) => body),
     header-ascent: 10%,
   )
-  tocpage(figures, tables)
+  tocpage(figures, tables, glossary_enabled)
 
   // skip to next odd page, reset page counter
   pagebreak(to: "odd")
   counter(page).update(1)
 }
+
+#let appendices(content) = {
+  set page(
+    footer: footer("I"),
+    header: header(numbering: i => numbering("A", i)),
+    numbering: "I",
+  )
+  counter(page).update(1)
+  counter(heading).update(0)
+  set heading(numbering: "A.1", supplement: [Appendix])
+
+  content
+}
+
+#let sub-figure-numbering = (super, sub) => numbering("1.1a", counter(heading).get().first(), super, sub)
+#let figure-numbering = super => numbering("1.1", counter(heading).get().first(), super)
 
 /// Instantiates the Chalmers University of Technology template. Should be used
 /// in a `show` rule:
@@ -178,6 +195,7 @@
     people that supported you during your project.],
   figures: true,
   tables: true,
+  glossary_enabled: true,
   content,
 ) = {
   set page(
@@ -212,6 +230,7 @@
     acknowledgements,
     figures,
     tables,
+    glossary_enabled,
   )
 
 
@@ -236,13 +255,9 @@
   set heading(numbering: "1.1")
   counter(heading).update(0)
 
-  set heading(numbering: "1.1")
-  set math.equation(numbering: (..num) =>
-    numbering("(1.1)", counter(heading).get().first(), num.pos().first())
-  )
-  set figure(numbering: (..num) =>
-    numbering("1.1", counter(heading).get().first(), num.pos().first())
-  )
+  set math.equation(numbering: (..num) => numbering("(1.1)", counter(heading).get().first(), num.pos().first()))
+
+  show figure.where(kind: image): set figure(numbering: figure-numbering)
 
   show heading: it => {
     if it.level == 1 {
@@ -261,6 +276,7 @@
       [#counter(heading).display() #h(text.size) #it.body]
     }
   }
+  show heading.where(level: 1): it => counter(figure.where(kind: image)).update(0) + it
 
   show bibliography: it => {
     show heading: it => {
@@ -277,14 +293,10 @@
     it
   }
 
-  //show heading: i-figured.reset-counters
-  //show figure: i-figured.show-figure
-  //show math.equation: i-figured.show-equation
-  //set math.equation(numbering: "(1.1)")
-  
   content
 
-  pagebreak()
+  // Doubble check this, not sure if odd or even
+  pagebreak(to: "even", weak: true)
   set page(
     footer: none,
     header: none,

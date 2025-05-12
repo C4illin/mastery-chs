@@ -30,7 +30,7 @@
   set text(font: "New Computer Modern Sans")
 
   pad(x: -50pt + 0.75cm, top: 70pt)[#image("../img/cover.jpg")]
- 
+
   align(left + bottom)[
     #huge(weight: "bold", title)
 
