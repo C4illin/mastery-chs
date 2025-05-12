@@ -1,7 +1,7 @@
 #import "lib.typ": join
 #import "../font-sizes.typ": *
 
-#let frontpage(school, year, title, subtitle, names, department, subject) = {
+#let frontpage(school, year, title, subtitle, names, department, subject, cover_image) = {
   let brown = rgb(144, 102, 78)
   let chalmersGray = cmyk(14%, 0%, 0%, 65%)
   let bg = block(
@@ -29,7 +29,9 @@
   set page(background: bg, margin: 50pt)
   set text(font: "New Computer Modern Sans")
 
-  pad(x: -50pt + 0.75cm, top: 70pt)[#image("../img/cover.jpg")]
+  if cover_image != false {
+    pad(x: -50pt + 0.75cm, top: 70pt)[#align(center)[#cover_image]]
+  }
 
   align(left + bottom)[
     #huge(weight: "bold", title)

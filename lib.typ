@@ -75,6 +75,7 @@
   figures,
   tables,
   glossary_enabled,
+  cover_image,
 ) = {
   let blankpagebreak(..args) = {
     set page(footer: none)
@@ -82,7 +83,7 @@
   }
 
   // first page
-  frontpage(school, date.year(), title, subtitle, authors.join([\ ]), department, subject)
+  frontpage(school, date.year(), title, subtitle, authors.join([\ ]), department, subject, cover_image)
 
   // third page (cover page)
   pagebreak(to: "odd")
@@ -180,7 +181,7 @@
 #let template(
   school: "Chalmers University of Technology",
   date: datetime.today(),
-  title: "An Informative Headline describing the Content of the Report",
+  title: "A Chalmers University of Technology Degree project report template for Typst",
   subtitle: "A Subtitle that can be Very Much Longer if Necessary",
   authors: ("Name Familyname 1", "Name Familyname 2"),
   department: "Department of Some Subject or Technology",
@@ -194,8 +195,9 @@
   acknowledgements: [Here, you can say thank you to your supervisor(s), company advisors and other
     people that supported you during your project.],
   figures: true,
-  tables: true,
-  glossary_enabled: true,
+  tables: false,
+  glossary_enabled: false,
+  cover_image: false,
   content,
 ) = {
   set page(
@@ -231,6 +233,7 @@
     figures,
     tables,
     glossary_enabled,
+    cover_image,
   )
 
 
