@@ -43,12 +43,12 @@ The following table presents an overview of the section levels that are used in 
     [*Command*],
   ),
 
-  [Chapter], [`\chapter{Chapter name}`],
-  [Section], [`\section{Section name}`],
-  [Subsection], [`\subsection{Subsection name}`],
-  [Subsubsection], [`\subsubsection{Subsubsection name}`],
-  [Paragraph], [`\paragraph{Paragraph name}`],
-  [Subparagraph], [`\subparagraph{Subparagraph name}`],
+  [Chapter], [`= Chapter name`],
+  [Section], [`== Section name`],
+  [Subsection], [`=== Subsection name`],
+  [Subsubsection], [`==== Subsubsection name`],
+  [Paragraph], [`===== Paragraph name`],
+  [Subparagraph], [`====== Subparagraph name`],
 )
 
 
@@ -62,7 +62,7 @@ The following table presents an overview of the section levels that are used in 
 
 ====== Subparagraph
 
-=
+= New Chapter
 
 #bibliography("example-refs.bib", style: "ieee")
 #show: appendices
