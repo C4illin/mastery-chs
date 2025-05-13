@@ -2,16 +2,15 @@
 
 A thesis template for Master Thesises at
 [Chalmers University of Technology](https://www.chalmers.se/en/) (except CSE/GU students).
-More or less a port of the
-[provided LaTeX template](https://www.overleaf.com/latex/templates/chalmers-university-of-technology-degree-project-report-template-2023-english/tffgsvqnhxmv), although
-not a 100% faithful one.
+
+More or less a port of the [provided LaTeX template](https://www.overleaf.com/latex/templates/chalmers-university-of-technology-degree-project-report-template-2023-english/tffgsvqnhxmv), which is a port of the original Word template.
 
 ## Usage
 
-Example usage:
+Start a new poject on Typst upload the `mastery-chs` folder and create a new file with the following content:
 
 ```
-#import "@preview/mastery-chs:0.1.0" : template
+#import "mastery-chs/lib.typ": template, appendices, flex-caption
 #let department = "Department of Computer Science and Engineering"
 #show: template.with(
   school: ("Chalmers University of Technology", "University of Gothenburg"),
@@ -26,5 +25,6 @@ Example usage:
 
 = Introduction
 ...
-
 ```
+
+See the `example` folder for a more complete example.
